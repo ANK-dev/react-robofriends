@@ -1,24 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import {connect} from 'react-redux'
 import CardList from '../../components/Cards/CardList';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Scroll from '../../components/Scroll/Scroll'
 import ErrorBoundry from '../../components/ErrorBoundry/ErrorBoundry';
 import './App.css'
+import {setSearchfield} from '../../actions'
 
+const mapStateToProps = state => {
+    return {
+        searchfield: state.searchfield
+    }
+}
 
-function App() {
+const mapDispatchToProps = dispatch =>  {
+    return {
+        onSearchChange: event => dispatch(setSearchfield(event.target.value))
+    }
+}
+
+function App(props) {
     const [robots, setRobots] = useState([]);
-    const [searchfield, setSearchfield] = useState('');
+    const { searchfield, onSearchChange } = props;
 
     useEffect(() => {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
             .then(users => {setRobots(users)});
         }, [])
-
-    const onSearchChange = (event) => {
-        setSearchfield(event.target.value);
-    }
 
     const filteredRobots = robots.filter(robot => {
         return robot.name.toLowerCase().includes(
@@ -49,4 +58,4 @@ function App() {
 }
 
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
