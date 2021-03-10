@@ -1,11 +1,14 @@
 import React, { useEffect } from 'react';
 import {connect} from 'react-redux'
+import {setSearchfield, requestRobots} from '../../actions'
+
 import CardList from '../../components/Cards/CardList';
 import SearchBox from '../../components/SearchBox/SearchBox';
 import Scroll from '../../components/Scroll/Scroll'
 import ErrorBoundry from '../../components/ErrorBoundry/ErrorBoundry';
+import Header from '../../components/Header/Header';
+
 import './App.css'
-import {setSearchfield, requestRobots} from '../../actions'
 
 const mapStateToProps = state => {
     return {
@@ -45,14 +48,14 @@ function App(props) {
     if (isPending)
         return (
             <div className='tc'>
-                <h1 className='f1'>RoboFriends</h1>
+                <Header/>
                 <h1>Loading...</h1>
             </div>
         );
     else
         return (
             <div className='tc'>
-                <h1 className='f1'>RoboFriends</h1>
+                <Header/>
                 <SearchBox searchChange={onSearchChange}/>
                 <Scroll>
                     <ErrorBoundry>
