@@ -4,7 +4,7 @@ import {setSearchfield, requestRobots} from '../../actions';
 
 import MainPage from '../../components/MainPage/MainPage';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state: any) => {
     return {
         searchfield: state.searchRobots.searchfield,
         robots: state.requestRobots.robots,
@@ -13,14 +13,14 @@ const mapStateToProps = state => {
     }
 }
 
-const mapDispatchToProps = dispatch =>  {
+const mapDispatchToProps = (dispatch: any) =>  {
     return {
-        onSearchChange: event => dispatch(setSearchfield(event.target.value)),
+        onSearchChange: (event: any) => dispatch(setSearchfield(event.target.value)),
         onRequestRobots: () => dispatch(requestRobots())
     }
 }
 
-function App(props) {
+function App(props: any) {
     return <MainPage {...props}/>
 }
 

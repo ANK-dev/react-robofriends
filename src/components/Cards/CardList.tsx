@@ -1,7 +1,8 @@
 import React from 'react';
 import Card from './Card';
+import {IRobot} from '../MainPage/MainPage'
 
-const Cardlist = ({robots}) => {
+const Cardlist = ({robots}: {robots: IRobot[]}) => {
     return (
         <div>
             {

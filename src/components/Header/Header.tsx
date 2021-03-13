@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 class Header extends Component {
-    shouldComponentUpdate(nextProps, nextState) {
+    shouldComponentUpdate() {
         return false;
     }
     render() {

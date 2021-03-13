@@ -9,7 +9,13 @@ import Header from '../../components/Header/Header';
 
 import './MainPage.css'
 
-function MainPage(props) {
+export interface IRobot {
+  name: string;
+  id: number;
+  email: string;
+}
+
+function MainPage(props: any) {
     const {
         searchfield,
         onSearchChange,
@@ -22,7 +28,7 @@ function MainPage(props) {
             onRequestRobots()
         }, [])
 
-    const filteredRobots = robots.filter(robot => {
+    const filteredRobots: IRobot[] = robots.filter((robot: any) => {
         return robot.name.toLowerCase().includes(
             searchfield.toLowerCase()
         );
